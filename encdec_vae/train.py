@@ -97,7 +97,7 @@ def train_vae(model, batches, optimizer, dest_dir, create_variables, max_epoch=N
             logger.info(_status_str(status))
 
         # save model
-        if epoch % save_every == 0 or epoch == max_epoch:
+        if epoch % save_every == 0 or (max_epoch is not None and epoch == max_epoch - 1):
             model.save(dest_dir, epoch)
 
         epoch += 1
